@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Repositories\Contracts\UserRepositoryInterface;
 
 class UserController extends Controller
 {
@@ -13,9 +13,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UserRepositoryInterface $model)
     {
-        $list = User::all();
+        $list = $model->paginate(2);
 
         return view('admin.users.index', compact('list'));
     }
