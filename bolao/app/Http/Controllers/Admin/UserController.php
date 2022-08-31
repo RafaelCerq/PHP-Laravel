@@ -13,9 +13,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(UserRepositoryInterface $model)
+    public function index(UserRepositoryInterface $model, Request $request)
     {
-        $list = $model->paginate(2);
+        if (isset($request->serarch)) {
+
+        } else {
+            $list = $model->paginate(2);
+        }
 
         return view('admin.users.index', compact('list'));
     }
