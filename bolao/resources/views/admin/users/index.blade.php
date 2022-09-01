@@ -26,7 +26,7 @@
                             <a href="#">Adicionar</a>
                         </div>
                         <div class="form-group mx-sm-3 mb-2">
-                            <input type="search" name="search" class="form-control" placeholder="busca">
+                            <input type="search" class="form-control" name="search" placeholder="busca" value="{{$search}}">
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Busca</button>
                     </form>
@@ -51,10 +51,11 @@
 
                         </tbody>
                     </table>
-
-                    <div class="">
-                        {{$list}}
-                    </div>
+                    @if (!$search)
+                      <div class="">
+                        {{$list->links()}}
+                      </div>
+                    @endif
                 </div>
             </div>
         </div>
