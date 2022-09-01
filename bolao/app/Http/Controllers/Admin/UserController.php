@@ -42,6 +42,9 @@ class UserController extends Controller
 
         $routeName = $this->route;
 
+        //$request->session()->flash('msg', 'Olá Alert');
+        //$request->session()->flash('status', 'success'); // success error notification
+
         return view('admin.'.$routeName.'.index',compact('list','search','page','routeName','columnList'));
     }
 
