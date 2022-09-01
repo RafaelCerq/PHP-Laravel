@@ -19,14 +19,14 @@ abstract class AbstractRepository
         return app($this->model);
     }
 
-    public function all():Collection
+    public function all(string $column = 'id', string $order = 'ASC'):Collection
     {
-        return $this->model->all();
+        return $this->model->orderBy($column,$order)->get();
     }
 
-    public function paginate(int $paginate = 10):LengthAwarePaginator
+    public function paginate(int $paginate = 10, string $column = 'id', string $order = 'ASC'):LengthAwarePaginator
     {
-        return $this->model->paginate($paginate);
+        return $this->model->orderBy($column,$order)->paginate($paginate);
     }
 
     public function findWhereLike(array $columns, string $search, string $column = 'id', string $order = 'ASC'):Collection
