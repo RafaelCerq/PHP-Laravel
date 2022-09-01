@@ -24,3 +24,23 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
 
 });
 
+Route::get('lang', function () {
+    $lang = session('lang', 'pt-br');
+    if($lang == 'pt-br'){
+      $lang = "en";
+
+    }else{
+      $lang = "pt-br";
+    }
+    session(['lang' => $lang]);
+    return redirect()->back();
+
+})->name('lang');
+
+
+Route::get('/', function () {
+    $lang = session('lang', 'pt-br');
+    App::setLocale($lang);
+
+    return view('welcome');
+});

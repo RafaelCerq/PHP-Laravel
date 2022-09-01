@@ -15,15 +15,21 @@ class UserController extends Controller
      */
     public function index(UserRepositoryInterface $model, Request $request)
     {
+
+        $lang = session('lang', 'pt-br');
+        \App::setLocale($lang);
+
         $search = "";
-        if (isset($request->search)) {
-            $search = $request->search;
-            $list = $model->findWhereLike(['name', 'email'], $search, 'id', 'DESC');
-        } else {
-            $list = $model->paginate(2, 'id', 'DESC');
+        if(isset($request->search)){
+          $search = $request->search;
+          $list = $model->findWhereLike(['name','email'],$search,'id','DESC');
+        }else{
+          $list = $model->paginate(2,'id','DESC');
         }
 
-        return view('admin.users.index', compact('list','search'));
+        $page = trans('bolao.user_list');
+
+        return view('admin.users.index',compact('list','search','page'));
     }
 
     /**

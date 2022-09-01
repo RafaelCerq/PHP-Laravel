@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">@lang('bolao.dashboard')</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,48 +15,53 @@
                     @endif
 
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Lista de Usuários</li>
-                        </ol>
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">@lang('bolao.home')</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">@lang('bolao.list',['page'=>$page])</li>
+                      </ol>
                     </nav>
 
                     <form class="form-inline" method="GET" action="{{route('users.index')}}">
-                        <div class="form-group mb-2">
-                            <a href="#">Adicionar</a>
-                        </div>
-                        <div class="form-group mx-sm-3 mb-2">
-                            <input type="search" class="form-control" name="search" placeholder="busca" value="{{$search}}">
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2">Busca</button>
-                        <a class="btn btn-warning mb-2" href="{{route('users.index')}}">Limpar</a>
+                      <div class="form-group mb-2">
+                        <a href="#">@lang('bolao.add')</a>
+                      </div>
+                      <div class="form-group mx-sm-3 mb-2">
+                        <input type="search" class="form-control" name="search" placeholder="@lang('bolao.search')" value="{{$search}}">
+                      </div>
+                      <button type="submit" class="btn btn-primary mb-2">@lang('bolao.search')</button>
+                      <a class="btn btn-warning mb-2" href="{{route('users.index')}}">@lang('bolao.clean')</a>
                     </form>
 
+
+
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">E-mail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($list as $key => $value)
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">@lang('bolao.name')</th>
+                          <th scope="col">@lang('bolao.email')</th>
 
-                                <tr>
-                                    <th scope="row">{{$value->id}}</th>
-                                    <td>{{$value->name}}</td>
-                                    <td>{{$value->email}}</td>
-                                </tr>
-                            @endforeach
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($list as $key => $value)
 
-                        </tbody>
+                          <tr>
+                            <th scope="row">{{$value->id}}</th>
+                            <td>{{$value->name}}</td>
+                            <td>{{$value->email}}</td>
+                          </tr>
+                        @endforeach
+
+
+                      </tbody>
                     </table>
                     @if (!$search && $list)
                       <div class="">
                         {{$list->links()}}
                       </div>
                     @endif
+
                 </div>
             </div>
         </div>
