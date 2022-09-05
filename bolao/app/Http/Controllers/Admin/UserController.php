@@ -57,7 +57,18 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $page = trans('bolao.user_list');
+        $page_create = trans('bolao.user');
+
+        $routeName = $this->route;
+
+        $breadcrumb = [
+            (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
+            (Object)['url'=>route($routeName.".index"), 'title'=>trans('bolao.list', ['page'=>$page])],
+            (Object)['url'=>'', 'title'=>trans('bolao.create_crud',['page'=>$page_create])],
+        ];
+
+        return view('admin.'.$routeName.'.create',compact('page', 'page_create', 'routeName', 'breadcrumb'));
     }
 
     /**

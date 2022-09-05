@@ -23,6 +23,8 @@ return [
     'dashboard'=>'Dashboard',
     'list'=>':page List',
     'user_list'=>'User',
+    'user'=>'user',
+    'create_crud'=>'Add :page',
 
 
 ];
