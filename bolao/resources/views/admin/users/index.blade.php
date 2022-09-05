@@ -22,12 +22,8 @@
                     @table_component(['columnList'=>$columnList, 'list'=>$list])
                     @endtable_component
 
-
-                    @if (!$search && $list)
-                      <div class="">
-                        {{$list->links()}}
-                      </div>
-                    @endif
+                    @paginate_component(['search'=>$search, 'list'=>$list])
+                    @endpaginate_component
 
                 </div>
             </div>
