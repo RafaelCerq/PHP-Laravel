@@ -45,7 +45,12 @@ class UserController extends Controller
         //$request->session()->flash('msg', 'Olá Alert');
         //$request->session()->flash('status', 'success'); // success error notification
 
-        return view('admin.'.$routeName.'.index',compact('list','search','page','routeName','columnList'));
+        $breadcrumb = [
+            (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
+            (Object)['url'=>'', 'title'=>trans('bolao.list', ['page'=>$page])],
+        ];
+
+        return view('admin.'.$routeName.'.index',compact('list','search','page','routeName','columnList', 'breadcrumb'));
     }
 
     /**
