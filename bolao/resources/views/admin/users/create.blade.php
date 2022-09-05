@@ -10,5 +10,11 @@
         @breadcrumb_component(['page'=>$page, 'items'=>$breadcrumb ?? []])
         @endbreadcrumb_component
 
+
+
+        @form_component(['action'=>$routeName.".store", 'method'=>"POST"])
+            <input type="text" name="" placeholder="Nome">
+        @endform_component
+
     @endpage_component
 @endsection
