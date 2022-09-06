@@ -39,4 +39,9 @@ abstract class AbstractRepository
 
        return $query->orderBy($column,$order)->get();
     }
+
+    public function create(array $data):Bool
+    {
+        return (bool) $this->model->create($data);
+    }
 }

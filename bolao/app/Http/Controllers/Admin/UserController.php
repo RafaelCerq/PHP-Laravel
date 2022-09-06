@@ -87,6 +87,16 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ])->validate();
+
+        if ($this->model->create($data)) {
+            session()->flash('msg', 'Registro adicionado com sucesso!');
+            session()->flash('status', 'success'); // success error notification
+            return redirect()->back();
+        } else {
+            session()->flash('msg', 'Erro ao adicionar registro!');
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->back();
+        }
     }
 
     /**
