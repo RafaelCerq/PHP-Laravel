@@ -19,9 +19,9 @@
             @endif
         @endforeach
         <td>
-            <a href="{{route{$routeName.'.show', $value->id)}}"><i style="color: black;" class="material-icons">pageview</i></a>
-            <a href="{{route{$routeName.'.edit', $value->id)}}"><i style="color: orange;" class="material-icons">create</i></a>
-            <a href="{{route{$routeName.'.show', [$value->id, 'delete=1'])}}"><i style="color: red;" class="material-icons">delete</i></a>
+            <a href="{{route($routeName.'.show', $value->id)}}"><i style="color: black;" class="material-icons">pageview</i></a>
+            <a href="{{route($routeName.'.edit', $value->id)}}"><i style="color: orange;" class="material-icons">create</i></a>
+            <a href="{{route($routeName.'.show', [$value->id, 'delete=1'])}}"><i style="color: red;" class="material-icons">delete</i></a>
         </td>
 
         </tr>
