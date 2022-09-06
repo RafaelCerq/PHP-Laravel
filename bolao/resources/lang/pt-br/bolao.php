@@ -25,12 +25,17 @@ return [
     'user'=>'usuário',
     'create_crud'=>'Adicionar :page',
     'edit_crud'=>'Editar :page',
+    'show_crud'=>'Detalhe: :page',
     'record_added_successusfully'=>'Registro adicionado com sucesso!',
     'error_adding_registry'=>'Erro ao adicionar registro!',
     'successfully_edited_record'=>'Registro editado com sucesso!',
     'error_editing_record'=>'Erro ao Editar registro!',
     'action'=>'Ação',
     'edit'=>'Editar',
+    'delete'=>'Deletar',
+    'delete_this_record'=>'Deletar esse registro?',
+    'registration_deleted_successfully'=>'Registro deletado com sucesso!',
+    'error_deleting_record'=>'Erro ao deletar registro!',
 
 
 ];
