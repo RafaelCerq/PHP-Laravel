@@ -25,9 +25,12 @@ return [
     'user_list'=>'User',
     'user'=>'user',
     'create_crud'=>'Add :page',
+    'edit_crud'=>'Edit :page',
     'record_added_successusfully'=>'Record added successfully!',
     'error_adding_registry'=>'Error adding registry!',
-    'action'=>'Action',
+    'successfully_edited_record'=>'Successfully edited record!',
+    'error_editing_record'=>'Error editing record!',
+    'edit'=>'Edit',
 
 
 ];
