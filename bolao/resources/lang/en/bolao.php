@@ -27,6 +27,7 @@ return [
     'create_crud'=>'Add :page',
     'record_added_successusfully'=>'Record added successfully!',
     'error_adding_registry'=>'Error adding registry!',
+    'action'=>'Action',
 
 
 ];
