@@ -24,6 +24,8 @@ return [
     'user_list'=>'Usuários',
     'user'=>'usuário',
     'create_crud'=>'Adicionar :page',
+    'record_added_successusfully'=>'Registro adicionado com sucesso!',
+    'error_adding_registry'=>'Erro ao adicionar registro!',
 
 
 ];

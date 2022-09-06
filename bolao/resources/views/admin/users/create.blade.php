@@ -14,7 +14,7 @@
 
         @form_component(['action'=>route($routeName.".store"), 'method'=>"POST"])
             @include('admin.users.form')
-            <button class="btn btn-primary btn-md float-right">Adicionar</button>
+            <button class="btn btn-primary btn-md float-right">@lang('bolao.add')</button>
         @endform_component
 
     @endpage_component
