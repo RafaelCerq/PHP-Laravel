@@ -106,9 +106,30 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $routeName = $this->route;
+        $register = $this->model->find($id);
+        if($register){
+            $page = trans('bolao.user_list');
+            $page2 = trans('bolao.user');
+
+            $breadcrumb = [
+                (object)['url'=>route('home'),'title'=>trans('bolao.home')],
+                (object)['url'=>route($routeName.".index"),'title'=>trans('bolao.list',['page'=>$page])],
+                (object)['url'=>'','title'=>trans('bolao.show_crud',['page'=>$page2])],
+            ];
+            $delete = false;
+            if($request->delete ?? false){
+                session()->flash('msg', trans('bolao.delete_this_record'));
+                session()->flash('status', 'notification'); // success error notification
+                $delete = true;
+            }
+
+            return view('admin.'.$routeName.'.show',compact('register','page','page2','routeName','breadcrumb','delete'));
+        }
+
+        return redirect()->route($routeName.'.index');
     }
 
     /**
@@ -182,6 +203,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        if ($this->model->delete($id)) {
+            session()->flash('msg', trans('bolao.registration_deleted_successfully'));
+            session()->flash('status', 'success'); // success error notification
+        } else {
+            session()->flash('msg', trans('bolao.error_deleting_record'));
+            session()->flash('status', 'error'); // success error notification
+        }
+
+        $routeName = $this->route;
+        return redirect()->route($routeName.'.index');
     }
 }

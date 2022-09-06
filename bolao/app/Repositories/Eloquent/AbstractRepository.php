@@ -59,4 +59,14 @@ abstract class AbstractRepository
             return false;
         }
     }
+
+    public function delete(int $id):Bool
+    {
+        $register = $this->find($id);
+        if ($register) {
+            return (bool) $register->delete();
+        } else {
+            return false;
+        }
+    }
 }
