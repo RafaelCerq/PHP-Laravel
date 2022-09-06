@@ -185,11 +185,11 @@ class UserController extends Controller
 
         if ($this->model->update($data, $id)) {
             session()->flash('msg', trans('bolao.successfully_edited_record'));
-            session()->flash('status', 'success'); // success error notification
+            session()->flash('status', 'success');
             return redirect()->back();
         } else {
             session()->flash('msg', trans('bolao.error_editing_record'));
-            session()->flash('status', 'error'); // success error notification
+            session()->flash('status', 'error');
             return redirect()->back();
         }
     }
