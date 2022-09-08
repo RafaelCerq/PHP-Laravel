@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepositoryInterface;
 use Validator;
 use Illuminate\Validation\Rule;
+use App\Repositories\Contracts\RoleRepositoryInterface;
 
 class UserController extends Controller
 {
@@ -15,10 +16,12 @@ class UserController extends Controller
     private $paginate = 7;
     private $search = ['name','email'];
     private $model;
+    private $modelRole;
 
-    public function __construct(UserRepositoryInterface $model)
+    public function __construct(UserRepositoryInterface $model, RoleRepositoryInterface $modelRole)
     {
         $this->model = $model;
+        $this->modelRole = $modelRole;
     }
 
     /**
@@ -64,13 +67,15 @@ class UserController extends Controller
 
         $routeName = $this->route;
 
+        $roles = $this->modelRole->all('name', 'ASC');
+
         $breadcrumb = [
             (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
             (Object)['url'=>route($routeName.".index"), 'title'=>trans('bolao.list', ['page'=>$page])],
             (Object)['url'=>'', 'title'=>trans('bolao.create_crud',['page'=>$page_create])],
         ];
 
-        return view('admin.'.$routeName.'.create',compact('page', 'page_create', 'routeName', 'breadcrumb'));
+        return view('admin.'.$routeName.'.create',compact('page', 'page_create', 'routeName', 'breadcrumb', 'roles'));
     }
 
     /**
@@ -147,13 +152,15 @@ class UserController extends Controller
             $page = trans('bolao.user_list');
             $page2 = trans('bolao.user');
 
+            $roles = $this->modelRole->all('name', 'ASC');
+
             $breadcrumb = [
                 (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
                 (Object)['url'=>route($routeName.".index"), 'title'=>trans('bolao.list', ['page'=>$page])],
                 (Object)['url'=>'', 'title'=>trans('bolao.edit_crud',['page'=>$page2])],
             ];
 
-            return view('admin.'.$routeName.'.edit',compact('register', 'page', 'page2', 'routeName', 'breadcrumb'));
+            return view('admin.'.$routeName.'.edit',compact('register', 'page', 'page2', 'routeName', 'breadcrumb', 'roles'));
 
         }
 
