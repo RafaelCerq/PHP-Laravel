@@ -11,7 +11,7 @@ class RoleController extends Controller
 {
 
     private $route = 'roles';
-    private $paginate = 2;
+    private $paginate = 7;
     private $search = ['name','description'];
     private $model;
 

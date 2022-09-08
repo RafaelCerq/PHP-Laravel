@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     private $route = 'users';
-    private $paginate = 2;
+    private $paginate = 7;
     private $search = ['name','email'];
     private $model;
 
