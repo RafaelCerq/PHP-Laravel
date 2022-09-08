@@ -39,6 +39,7 @@ return [
     'description'=>'Descrição',
     'permission_list'=>'Permissões',
     'permission'=>'Permissão',
-
+    'create_or_edit'=>'Criar ou editar',
+    
 
 ];
