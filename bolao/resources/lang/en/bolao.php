@@ -40,5 +40,7 @@ return [
     'permission_list'=>'Permissions',
     'permission'=>'Permission',
     'create_or_edit'=>'Create or edit',
+    'role_list'=>'Roles',
+    'role'=>'Role',
 
 ];
