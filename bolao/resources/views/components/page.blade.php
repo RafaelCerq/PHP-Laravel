@@ -1,15 +1,17 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-{{$col}}">
-            <div class="card">
-                <div class="card-header">{{$page}}</div>
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-{{$col}}">
+                <div class="card">
+                    <div class="card-header">{{$page}}</div>
 
-                <div class="card-body">
+                    <div class="card-body">
 
-                    {{$slot}}
+                        {{$slot}}
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
