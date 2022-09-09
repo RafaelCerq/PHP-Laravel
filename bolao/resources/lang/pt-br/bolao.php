@@ -5,6 +5,7 @@ return [
 
     'lang' => 'en',
     'login' => 'Entrar',
+    'logout' => 'Sair',
     'register' => 'Cadastro',
     'name' => 'Nome',
     'email' => 'E-mail',
@@ -42,6 +43,11 @@ return [
     'create_or_edit'=>'Criar ou editar',
     'role_list'=>'Funções',
     'role'=>'Função',
+    'welcome_to_the_betting_website'=>'Bem vindo ao site de Bolões',
+    'betting_list'=>'Bolões',
+    'enjoy_with_your_family'=>'Curta com sua família',
+    'join_or_create'=>'Participe ou crie o seu!',
+    'check_the_list_here'=>'Confira aqui a Lista',
 
 
 ];

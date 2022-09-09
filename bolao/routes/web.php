@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/modelo', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::namespace('Site')->group(function () {
+    Route::get('/', 'PrincipalController@index')->name('principal');
+});
 
 Route::middleware('auth')->namespace('Admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
