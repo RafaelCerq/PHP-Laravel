@@ -9,7 +9,7 @@
         @endif
     </div>
 
-    <div class="form-group col-6">
+    {{-- <div class="form-group col-6">
         <label for="current_value">{{ __('bolao.current_value') }}</label>
         <input type="text" class="form-control{{ $errors->has('current_value') ? ' is-invalid' : '' }}" name="current_value" value="{{ old('current_value') ?? ($register->current_value ?? '') }}">
         @if ($errors->has('current_value'))
@@ -17,7 +17,7 @@
                 <strong>{{ $errors->first('current_value') }}</strong>
             </span>
         @endif
-    </div>
+    </div> --}}
 
     <div class="form-group col-6">
         <label for="value_result">{{ __('bolao.value_result') }}</label>
