@@ -8,6 +8,7 @@ use App\Repositories\Contracts\UserRepositoryInterface;
 use Validator;
 use Illuminate\Validation\Rule;
 use App\Repositories\Contracts\RoleRepositoryInterface;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -31,6 +32,14 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        // $this->authorize('list-user');
+
+        if (Gate::denies('list-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $columnList = ['id'=>'#','name'=>trans('bolao.name'),'email'=>trans('bolao.email')];
         $page = trans('bolao.user_list');
 
@@ -62,6 +71,12 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (Gate::denies('create-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $page = trans('bolao.user_list');
         $page_create = trans('bolao.user');
 
@@ -86,6 +101,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (Gate::denies('create-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $data = $request->all();
 
         Validator::make($data, [
@@ -113,6 +134,12 @@ class UserController extends Controller
      */
     public function show($id, Request $request)
     {
+        if (Gate::denies('show-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $routeName = $this->route;
         $register = $this->model->find($id);
         if($register){
@@ -145,6 +172,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (Gate::denies('edit-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $routeName = $this->route;
         $register = $this->model->find($id);
         if ($register) {
@@ -177,6 +210,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Gate::denies('edit-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
+
         $data = $request->all();
 
         if (!$data['password']) {
@@ -210,6 +249,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (Gate::denies('delete-user')) {
+            session()->flash('msg', trans('bolao.access_denied'));
+            session()->flash('status', 'error'); // success error notification
+            return redirect()->route('home');
+        }
 
         if ($this->model->delete($id)) {
             session()->flash('msg', trans('bolao.registration_deleted_successfully'));

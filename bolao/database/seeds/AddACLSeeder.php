@@ -25,7 +25,11 @@ class AddACLSeeder extends Seeder
 
         // Permissions
         $listUser = \App\Permission::firstOrCreate(['name'=>'list-user'],['description'=>'Listar registros']);
-        $createUser = \App\Permission::firstOrCreate(['name'=>'create-user'],['description'=>'Criar usuários']);
+        $createUser = \App\Permission::firstOrCreate(['name'=>'create-user'],['description'=>'Criar registro']);
+        $editUser = \App\Permission::firstOrCreate(['name'=>'edit-user'],['description'=>'Editar registro']);
+        $showUser = \App\Permission::firstOrCreate(['name'=>'show-user'],['description'=>'Visualizar registro']);
+        $deleteUser = \App\Permission::firstOrCreate(['name'=>'delete-user'],['description'=>'Deletar registro']);
+        $acessoACL = \App\Permission::firstOrCreate(['name'=>'acl'],['description'=>'Acesso ao ACL']);
 
         // Role com Permissions
         $gerenteACL->permissions()->attach($listUser);

@@ -48,5 +48,6 @@ return [
     'enjoy_with_your_family'=>'Enjoy with your family',
     'join_or_create'=>'Join or create!',
     'check_the_list_here'=>'Check the list here',
+    'access_denied'=>'Access Denied!',
 
 ];
