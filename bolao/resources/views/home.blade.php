@@ -9,15 +9,15 @@
 
         <div id="portfolio">
             <div class="row">
-                @can ('list-users')
+                @can ('list-user')
                     <div style="cursor:pointer" onclick="window.location = '{{route('users.index')}}'" class="col-md-4 col-sm-6 portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                        <a class="portfolio-link">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fas fa-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+                            <img class="img-fluid" src="{{asset('img/portfolio/02-thumbnail.jpg')}}" alt="">
                         </a>
                         <div class="portfolio-caption">
                             <h4>@lang('bolao.list',['page'=>__('bolao.user_list')])</h4>
@@ -27,13 +27,13 @@
                 @endcan
 
                 <div style="cursor:pointer" onclick="window.location = '{{route('permissions.index')}}'" class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fas fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img class="img-fluid" src="img/portfolio/permissao.jpg" alt="">
+                        <img class="img-fluid" src="{{asset('img/portfolio/permissao.jpg')}}" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>@lang('bolao.list',['page'=>__('bolao.permission_list')])</h4>
@@ -42,13 +42,13 @@
                 </div>
 
                 <div style="cursor:pointer" onclick="window.location = '{{route('roles.index')}}'" class="col-md-4 col-sm-6 portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a class="portfolio-link">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fas fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+                        <img class="img-fluid" src="{{asset('img/portfolio/05-thumbnail.jpg')}}" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>@lang('bolao.list',['page'=>__('bolao.role_list')])</h4>
