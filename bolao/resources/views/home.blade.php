@@ -95,7 +95,7 @@
                           <i class="fas fa-plus fa-3x"></i>
                         </div>
                       </div>
-                      <img class="img-fluid" src="{{asset('img/portfolio/01-thumbnail.jpg')}}" alt="">
+                      <img class="img-fluid" src="{{asset('img/portfolio/04-thumbnail.jpg')}}" alt="">
                     </a>
                     <div class="portfolio-caption">
                       <h4>@lang('bolao.list',['page'=>__('bolao.match_list')])</h4>
