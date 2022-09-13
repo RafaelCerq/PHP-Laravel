@@ -17,4 +17,10 @@ class Round extends Model
     {
         return $this->belongsTo('App\Betting');
     }
+
+    // seguir padrão de acessores get+nome+Attribute
+    public function getBettingTitleAttribute()
+    {
+        return $this->betting->title;
+    }
 }
