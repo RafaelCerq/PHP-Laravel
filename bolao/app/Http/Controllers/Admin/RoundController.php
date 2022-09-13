@@ -31,8 +31,8 @@ class RoundController extends Controller
             'id'=>'#',
             'title'=>trans('bolao.title'),
             'betting_title'=>trans('bolao.betting_title'),
-            'date_start'=>trans('bolao.date_start'),
-            'date_end'=>trans('bolao.date_end')
+            'date_start_site'=>trans('bolao.date_start'),
+            'date_end_site'=>trans('bolao.date_end')
         ];
         $page = trans('bolao.round_list');
 
@@ -66,13 +66,16 @@ class RoundController extends Controller
 
         $routeName = $this->route;
 
+        $user = auth()->user();
+        $listRel = $user->bettings()->orderBy('id','desc')->get();
+
         $breadcrumb = [
             (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
             (Object)['url'=>route($routeName.".index"), 'title'=>trans('bolao.list', ['page'=>$page])],
             (Object)['url'=>'', 'title'=>trans('bolao.create_crud',['page'=>$page_create])],
         ];
 
-        return view('admin.'.$routeName.'.create',compact('page', 'page_create', 'routeName', 'breadcrumb'));
+        return view('admin.'.$routeName.'.create',compact('page', 'page_create', 'routeName', 'breadcrumb', 'listRel'));
     }
 
     /**
@@ -87,8 +90,9 @@ class RoundController extends Controller
 
         Validator::make($data, [
             'title' => 'required|string|max:255',
-            'data_start' => 'required',
-            'data_end' => 'required',
+            'betting_id' => 'required',
+            'date_start' => 'required',
+            'date_end' => 'required',
         ])->validate();
 
         if ($this->model->create($data)) {
@@ -149,13 +153,17 @@ class RoundController extends Controller
             $page = trans('bolao.round_list');
             $page2 = trans('bolao.round');
 
+            $user = auth()->user();
+            $listRel = $user->bettings()->orderBy('id','desc')->get();
+            $register_id = $register->betting_id;
+
             $breadcrumb = [
                 (Object)['url'=>route('home'), 'title'=>trans('bolao.home')],
                 (Object)['url'=>route($routeName.".index"), 'title'=>trans('bolao.list', ['page'=>$page])],
                 (Object)['url'=>'', 'title'=>trans('bolao.edit_crud',['page'=>$page2])],
             ];
 
-            return view('admin.'.$routeName.'.edit',compact('register', 'page', 'page2', 'routeName', 'breadcrumb'));
+            return view('admin.'.$routeName.'.edit',compact('register', 'page', 'page2', 'routeName', 'breadcrumb', 'listRel', 'register_id'));
 
         }
 
@@ -176,8 +184,9 @@ class RoundController extends Controller
 
         Validator::make($data, [
             'title' => 'required|string|max:255',
-            'data_start' => 'required',
-            'data_end' => 'required',
+            'betting_id' => 'required',
+            'date_start' => 'required',
+            'date_end' => 'required',
         ])->validate();
 
         if ($this->model->update($data, $id)) {

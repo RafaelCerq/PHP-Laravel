@@ -9,8 +9,10 @@
         @breadcrumb_component(['page'=>$page,'items'=>$breadcrumb ?? []])
         @endbreadcrumb_component
 
-        <p>{{__('bolao.name')}}: {{$register->name}}</p>
-        <p>{{__('bolao.description')}}: {{$register->description}}</p>
+        <p>{{__('bolao.title')}}: {{$register->title}}</p>
+        <p>{{__('bolao.bet')}}: {{$register->betting_title}}</p>
+        <p>{{__('bolao.date_start')}}: {{$register->date_start_site}}</p>
+        <p>{{__('bolao.date_end')}}: {{$register->date_end_site}}</p>
 
         @if ($delete)
             @form_component(['action'=>route($routeName.".destroy",$register->id),'method'=>"DELETE"])
