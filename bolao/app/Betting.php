@@ -24,4 +24,9 @@ class Betting extends Model
     {
         return $this->user->name;
     }
+
+    public function rounds()
+    {
+        return $this->hasMany('App\Round');
+    }
 }
