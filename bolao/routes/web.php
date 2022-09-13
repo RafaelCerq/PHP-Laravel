@@ -29,6 +29,7 @@ Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function (
     Route::resource('/users', 'UserController');
     Route::resource('/bettings', 'BettingController');
     Route::resource('/rounds', 'RoundController');
+    Route::resource('/matches', 'MatchController');
 
 });
 
