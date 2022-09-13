@@ -37,6 +37,17 @@ class User extends Authenticatable
         return $this->hasMany('App\Betting');
     }
 
+    public function getRoundsAttribute()
+    {
+      $bettings = $this->bettings;
+      $rounds = [];
+      foreach ($bettings as $key => $value) {
+         $rounds[]= $value->rounds;
+      }
+
+      return array_callapse($rounds);
+    }
+
     public function hasRoles($roles)
     {
         $userRoles = $this->roles;
