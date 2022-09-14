@@ -72,4 +72,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Betting');
     }
+
+    public function matches()
+    {
+        return $this->belongsToMany('App\Match');
+    }
 }
