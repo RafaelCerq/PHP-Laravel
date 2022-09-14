@@ -20,6 +20,11 @@ class Betting extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function getTitleAttribute($value)
+    {
+        return ucwords(mb_strtolower($value, 'UTF-8'));
+    }
+
     public function getUserNameAttribute()
     {
         return $this->user->name;

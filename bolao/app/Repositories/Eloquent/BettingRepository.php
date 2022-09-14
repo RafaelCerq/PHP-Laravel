@@ -4,11 +4,17 @@ namespace App\Repositories\Eloquent;
 
 use App\Betting;
 use App\Repositories\Contracts\BettingRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class BettingRepository extends AbstractRepository implements BettingRepositoryInterface
 {
 
     protected $model = Betting::class;
+
+    public function list():Collection
+    {
+        return Betting::all();
+    }
 
     public function create(array $data):Bool
     {
