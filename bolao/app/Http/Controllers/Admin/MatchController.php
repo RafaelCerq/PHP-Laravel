@@ -14,7 +14,7 @@ class MatchController extends Controller
 {
 
     private $route = 'matches';
-    private $paginate = 7;
+    private $paginate = 10;
     private $search = ['title','stadium','team_a','team_b'];
     private $model;
 
@@ -54,6 +54,9 @@ class MatchController extends Controller
 
         $routeName = $this->route;
 
+        //session()->flash('msg', 'Olá Alert');
+        //session()->flash('status', 'success'); // success error notification
+
         $breadcrumb = [
           (object)['url'=>route('home'),'title'=>trans('bolao.home')],
           (object)['url'=>'','title'=>trans('bolao.list',['page'=>$page])],
@@ -74,7 +77,7 @@ class MatchController extends Controller
         $page_create = trans('bolao.match');
 
         $user = auth()->user();
-        $listRel = $user->bettings;
+        $listRel = $user->rounds;
 
         $breadcrumb = [
           (object)['url'=>route('home'),'title'=>trans('bolao.home')],
@@ -147,6 +150,7 @@ class MatchController extends Controller
         }
 
         return view('admin.'.$routeName.'.show',compact('register','page','page2','routeName','breadcrumb','delete'));
+
       }
 
       return redirect()->route($routeName.'.index');
@@ -167,8 +171,8 @@ class MatchController extends Controller
           $page2 = trans('bolao.match');
 
           $user = auth()->user();
-          $listRel = $user->bettings;
-          $register_id = $register->betting_id;
+          $listRel = $user->rounds;
+          $register_id = $register->round_id;
 
           $breadcrumb = [
             (object)['url'=>route('home'),'title'=>trans('bolao.home')],
@@ -181,6 +185,8 @@ class MatchController extends Controller
         }
 
         return redirect()->route($routeName.'.index');
+
+
     }
 
     /**

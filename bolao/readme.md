@@ -12,3 +12,7 @@
 - php artisan migrate
 - php artisan migrate:reset
 - php artisan migrate --seed
+
+# Caso tenha problemas de classes não encontradas ao executar comandos (exemplo: db:seed), execute os comando abaixo para ajustar o caminho relativo ao projeto para seus arquivos php.
+- composer update 
+- composer dump-autoload

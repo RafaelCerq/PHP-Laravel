@@ -45,7 +45,7 @@ class User extends Authenticatable
          $rounds[]= $value->rounds;
       }
 
-      return array_callapse($rounds);
+      return array_collapse($rounds);
     }
 
     public function hasRoles($roles)

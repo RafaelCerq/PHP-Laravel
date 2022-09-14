@@ -27,7 +27,7 @@ return [
     'create_crud'=>'Adicionar :page',
     'edit_crud'=>'Editar :page',
     'show_crud'=>'Detalhe: :page',
-    'record_added_successusfully'=>'Registro adicionado com sucesso!',
+    'record_added_successfully'=>'Registro adicionado com sucesso!',
     'error_adding_registry'=>'Erro ao adicionar registro!',
     'successfully_edited_record'=>'Registro editado com sucesso!',
     'error_editing_record'=>'Erro ao Editar registro!',
