@@ -35,7 +35,8 @@ class PrincipalController extends Controller
             'date_start_site'=>trans('bolao.date_start'),
             'date_end_site'=>trans('bolao.date_end')
         ];
-        $page = trans('bolao.round_list');
+        $betting = $bettingRepository->find($betting_id);
+        $page = trans('bolao.round_list').' ('.$betting->title.')';
 
         $list = $bettingRepository->rounds($betting_id);
 
