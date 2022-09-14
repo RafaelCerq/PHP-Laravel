@@ -24,6 +24,8 @@ Route::namespace('Site')->group(function () {
 Route::middleware('auth')->namespace('Site')->group(function () {
     Route::post('/sign/{id}', 'PrincipalController@sign')->name('sign');
     Route::get('/sign/{id}', 'PrincipalController@signNoLogin')->name('sign');
+    Route::get('/rounds/{betting_id}', 'PrincipalController@rounds')->name('rounds');
+
 });
 
 Route::middleware('auth')->namespace('Admin')->group(function () {

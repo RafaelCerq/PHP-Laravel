@@ -38,11 +38,11 @@
                             <h4>{{$value->title}}</h4>
                             <p class="text-muted">{{$value->user_name}}</p>
                             @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
-                                <a  class="btn btn-info" href="#">Ver Rodadas</a>
+                                <a class="btn btn-info" href="{{route('rounds',$value->id)}}">@lang('bolao.view_rounds')</a>
                                 @if ($value->subscriber ?? false)
-                                    <button class="btn btn-danger">Deixar Bolão</button>
+                                    <button class="btn btn-danger">@lang('bolao.stop')</button>
                                 @else
-                                    <button class="btn btn-success">Participar</button>
+                                    <button class="btn btn-success">@lang('bolao.to_participate')</button>
                                 @endif
                             @endform_component
                         </div>
@@ -72,20 +72,20 @@
                                     <!-- Project Details Go Here -->
                                     <h2 class="text-uppercase">{{$value->title}}</h2>
                                     <p class="item-intro text-muted">{{$value->user_name}}</p>
-                                    <p>Este bolão tem as seguintes regras:</p>
+                                    <p>@lang('bolao.check_the_rules'):</p>
                                     <ul class="list-inline">
-                                        <li>Valor do Resultado: {{$value->value_result}}</li>
-                                        <li>Valor Extra: {{$value->extra_value}}</li>
-                                        <li>Taxa: {{$value->value_fee}}</li>
+                                        <li>@lang('bolao.value_result'): {{$value->value_result}}</li>
+                                        <li>@lang('bolao.extra_value'): {{$value->extra_value}}</li>
+                                        <li>@lang('bolao.value_fee'): {{$value->value_fee}}</li>
                                     </ul>
                                     @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
-                                        <a  class="btn btn-info" href="#">Ver Rodadas</a>
+                                        <a class="btn btn-info" href="{{route('rounds',$value->id)}}">@lang('bolao.view_rounds')</a>
                                         @if ($value->subscriber ?? false)
-                                            <button class="btn btn-danger">Deixar Bolão</button>
+                                            <button class="btn btn-danger">@lang('bolao.stop')</button>
                                         @else
-                                            <button class="btn btn-success">Participar</button>
+                                            <button class="btn btn-success">@lang('bolao.to_participate')</button>
                                         @endif
-                                        {{-- <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times"></i>Close Project</button> --}}
+                                        <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times"></i>@lang('bolao.close')</button>
                                     @endform_component
                                 </div>
                             </div>

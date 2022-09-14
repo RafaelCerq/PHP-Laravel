@@ -70,6 +70,11 @@ return [
     'match_list'=>'Matches',
     'match'=>'Match',
     'result_description'=>'(A - Team A, B - Team B, E - Draw)',
+    'view_rounds'=>'View rounds',
+    'stop'=>'Stop',
+    'to_participate'=>'To participate',
+    'close'=>'Close',
+    'check_the_rules'=>'Check the rules',
 
 
 ];
