@@ -21,6 +21,11 @@ Route::namespace('Site')->group(function () {
     Route::get('/', 'PrincipalController@index')->name('principal');
 });
 
+Route::middleware('auth')->namespace('Site')->group(function () {
+    Route::post('/sign/{id}', 'PrincipalController@sign')->name('sign');
+    Route::get('/sign/{id}', 'PrincipalController@signNoLogin')->name('sign');
+});
+
 Route::middleware('auth')->namespace('Admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });

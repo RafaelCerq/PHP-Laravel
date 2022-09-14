@@ -37,9 +37,14 @@
                         <div class="portfolio-caption">
                             <h4>{{$value->title}}</h4>
                             <p class="text-muted">{{$value->user_name}}</p>
-                            <a  class="btn btn-info" href="#">Ver Rodadas</a>
-                            <button class="btn btn-danger">Deixar Bolão</button>
-                            <button class="btn btn-success">Participar</button>
+                            @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
+                                <a  class="btn btn-info" href="#">Ver Rodadas</a>
+                                @if ($value->subscriber ?? false)
+                                    <button class="btn btn-danger">Deixar Bolão</button>
+                                @else
+                                    <button class="btn btn-success">Participar</button>
+                                @endif
+                            @endform_component
                         </div>
                     </div>
 
@@ -73,12 +78,15 @@
                                         <li>Valor Extra: {{$value->extra_value}}</li>
                                         <li>Taxa: {{$value->value_fee}}</li>
                                     </ul>
-                                    <a  class="btn btn-info" href="#">Ver Rodadas</a>
-                                    <button class="btn btn-danger">Deixar Bolão</button>
-                                    <button class="btn btn-success">Participar</button>
-                                    {{-- <button class="btn btn-primary" data-dismiss="modal" type="button">
-                                        <i class="fas fa-times"></i>
-                                        Close Project</button> --}}
+                                    @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
+                                        <a  class="btn btn-info" href="#">Ver Rodadas</a>
+                                        @if ($value->subscriber ?? false)
+                                            <button class="btn btn-danger">Deixar Bolão</button>
+                                        @else
+                                            <button class="btn btn-success">Participar</button>
+                                        @endif
+                                        {{-- <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times"></i>Close Project</button> --}}
+                                    @endform_component
                                 </div>
                             </div>
                         </div>

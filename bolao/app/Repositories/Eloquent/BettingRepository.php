@@ -13,7 +13,17 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
 
     public function list():Collection
     {
-        return Betting::all();
+        $list = Betting::all();
+        $user = Auth()->user();
+        if ($user) {
+            $myBetting = $user->myBetting;
+            foreach ($list as $key => $value) {
+                if ($myBetting->contains($value)) {
+                    $value->subscriber = true;
+                }
+            }
+        }
+        return $list;
     }
 
     public function create(array $data):Bool
@@ -34,6 +44,19 @@ class BettingRepository extends AbstractRepository implements BettingRepositoryI
         } else {
             return false;
         }
+    }
+
+    public function BettingUser($id)
+    {
+        $user = Auth()->user();
+        $betting = Betting::find($id);
+        if ($betting) {
+            $ret = $user->myBetting()->toggle($betting->id);
+            if (count($ret['attached'])) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
