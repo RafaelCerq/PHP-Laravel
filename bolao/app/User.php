@@ -67,4 +67,9 @@ class User extends Authenticatable
         return (boolean) $this->roles()->find($role->id);
 
     }
+
+    public function myBetting()
+    {
+        return $this->belongsToMany('App\Betting');
+    }
 }
