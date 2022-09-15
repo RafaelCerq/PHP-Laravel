@@ -13,4 +13,7 @@ class MatchUser extends Model
         'scoreboard_a',
         'scoreboard_b',
     ];
+
+    protected $table = "match_user"
 }
+

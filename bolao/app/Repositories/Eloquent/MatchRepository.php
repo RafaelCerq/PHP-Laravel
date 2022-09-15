@@ -26,33 +26,50 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
         }else{
           return false;
         }
-
     }
 
     public function update(array $data, int $id):Bool
     {
         $register = $this->find($id);
         if($register){
-          $user = auth()->user();
-          $listRel = $user->rounds;
-          $round_id = $data['round_id'];
-          $exist = false;
+            $user = auth()->user();
+            $listRel = $user->rounds;
+            $round_id = $data['round_id'];
+            $exist = false;
 
-          foreach ($listRel as $key => $value) {
-             if($round_id == $value->id){
-               $exist = true;
-             }
-          }
-          if($exist){
-            return (bool) $register->update($data);
-          }else{
-            return false;
-          }
+            foreach ($listRel as $key => $value) {
+                if($round_id == $value->id){
+                $exist = true;
+                }
+            }
+            if($exist){
+                return (bool) $register->update($data);
+            }else{
+                return false;
+            }
 
-        }else{
-          return false;
+            } else{
+                return false;
+            }
+    }
+
+    public function match($match_id)
+    {
+        $user = auth()->user();
+        $match = $user->matches()->find($match_id);
+        //dd($user->matches);
+        if ($match) {
+           return $match;
         }
 
+        $match = Match::find($match_id);
+        $betting_id = $match->round->betting->id;
+        $betting = $user->myBetting()->find($betting_id);
+        if($betting){
+            return $match;
+        }
+
+        return false;
     }
 
 }
