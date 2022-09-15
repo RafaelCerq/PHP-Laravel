@@ -11,8 +11,6 @@
             </div>
         </div>
     </header>
-
-
     <!-- Portfolio Grid -->
     <section class="bg-light" id="portfolio">
         <div class="container">
@@ -23,10 +21,9 @@
                 </div>
             </div>
             <div class="row">
-
                 @foreach ($list as $key => $value)
                     <div class="col-md-4 col-sm-6 portfolio-item">
-                        <a class="portfolio-link" data-toggle="modal" href="#bettingModal{{$value->id}}">
+                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal{{$value->id}}">
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <i class="fas fa-plus fa-3x"></i>
@@ -39,6 +36,7 @@
                             <p class="text-muted">{{$value->user_name}}</p>
                             @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
                                 <a class="btn btn-info" href="{{route('rounds',$value->id)}}">@lang('bolao.view_rounds')</a>
+                                <a class="btn btn-warning" href="{{route('classification',$value->id)}}">@lang('bolao.classification')</a>
                                 @if ($value->subscriber ?? false)
                                     <button class="btn btn-danger">@lang('bolao.stop')</button>
                                 @else
@@ -47,17 +45,14 @@
                             @endform_component
                         </div>
                     </div>
-
                 @endforeach
-
             </div>
         </div>
     </section>
 
-
     @foreach ($list as $key => $value)
         <!-- Modal 1 -->
-        <div class="portfolio-modal modal fade" id="bettingModal{{$value->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="portfolio-modal modal fade" id="portfolioModal{{$value->id}}" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="close-modal" data-dismiss="modal">
@@ -80,12 +75,15 @@
                                     </ul>
                                     @form_component(['action'=>route("sign",$value->id),'method'=>"POST"])
                                         <a class="btn btn-info" href="{{route('rounds',$value->id)}}">@lang('bolao.view_rounds')</a>
+                                        <a class="btn btn-warning" href="{{route('classification',$value->id)}}">@lang('bolao.classification')</a>
                                         @if ($value->subscriber ?? false)
                                             <button class="btn btn-danger">@lang('bolao.stop')</button>
                                         @else
                                             <button class="btn btn-success">@lang('bolao.to_participate')</button>
                                         @endif
-                                        <button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fas fa-times"></i>@lang('bolao.close')</button>
+                                        <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                            <i class="fas fa-times"></i>@lang('bolao.close')
+                                        </button>
                                     @endform_component
                                 </div>
                             </div>
@@ -94,7 +92,6 @@
                 </div>
             </div>
         </div>
+
     @endforeach
-
-
 @endsection

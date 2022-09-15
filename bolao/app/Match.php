@@ -56,13 +56,13 @@ class Match extends Model
     {
         $date = date_create($value);
 
-        $this->attributes['date'] = date_format($date,'Y-m-d H:i:s');
+        $this->attributes['date'] = date_format($date,'Y-m-d H:i');
     }
 
     public function getDateSiteAttribute()
     {
         $date = date_create($this->date);
-        return date_format($date,'d/m/Y H:i:s');
+        return date_format($date,'d/m/Y H:i');
     }
 
     public function getRoundTitleAttribute()

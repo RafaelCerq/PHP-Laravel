@@ -11,4 +11,7 @@ class BettingUser extends Model
         'user_id',
         'points',
     ];
+
+    protected $table = 'betting_user';
+
 }

@@ -32,6 +32,7 @@ return [
     'error_adding_registry'=>'Error adding registry!',
     'successfully_edited_record'=>'Successfully edited record!',
     'error_editing_record'=>'Error editing record!',
+    'action'=>'Action',
     'edit'=>'Edit',
     'delete'=>'Delete',
     'delete_this_record'=>'Delete this record?',
@@ -75,6 +76,8 @@ return [
     'to_participate'=>'To participate',
     'close'=>'Close',
     'check_the_rules'=>'Check the rules',
+    'classification'=>'Classification',
+    'points'=>'Points',
 
 
 ];

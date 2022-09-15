@@ -27,6 +27,8 @@ Route::middleware('auth')->namespace('Site')->group(function () {
     Route::get('/rounds/{betting_id}', 'PrincipalController@rounds')->name('rounds');
     Route::get('/rounds/matches/{round_id}', 'PrincipalController@matches')->name('rounds.matches');
     Route::get('/rounds/matches/result/{match_id}', 'PrincipalController@result')->name('match.result');
+    Route::put('/rounds/matches/result/{match_id}', 'PrincipalController@update')->name('match.result.update');
+    Route::get('/classification/{betting_id}', 'PrincipalController@classification')->name('classification');
 });
 
 Route::middleware('auth')->namespace('Admin')->group(function () {

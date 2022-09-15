@@ -75,5 +75,7 @@ return [
     'to_participate'=>'Participar',
     'close'=>'Fechar',
     'check_the_rules'=>'Confira as regras',
+    'classification'=>'Classificação',
+    'points'=>'Pontos',
 
 ];

@@ -13,7 +13,6 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
 
     public function create(array $data):Bool
     {
-
         $data['password'] = Hash::make($data['password']);
         $register = $this->model->create($data);
         if(isset($data['roles']) && count($data['roles'])){
@@ -47,7 +46,7 @@ class UserRepository extends AbstractRepository implements UserRepositoryInterfa
             }
 
             return (bool) $register->update($data);
-        } else {
+        } else{
             return false;
         }
     }

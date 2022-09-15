@@ -37,15 +37,25 @@ class User extends Authenticatable
         return $this->hasMany('App\Betting');
     }
 
+    public function matches()
+    {
+        return $this->belongsToMany('App\Match')->withPivot('scoreboard_a', 'scoreboard_b', 'result');
+    }
+
     public function getRoundsAttribute()
     {
-      $bettings = $this->bettings;
-      $rounds = [];
-      foreach ($bettings as $key => $value) {
-         $rounds[]= $value->rounds;
-      }
+        $bettings = $this->bettings;
+        $rounds = [];
+        foreach ($bettings as $key => $value) {
+            $rounds[]= $value->rounds;
+        }
 
       return array_collapse($rounds);
+    }
+
+    public function getPivotPointsAttribute()
+    {
+        return $this->pivot->points;
     }
 
     public function hasRoles($roles)
@@ -71,10 +81,5 @@ class User extends Authenticatable
     public function myBetting()
     {
         return $this->belongsToMany('App\Betting');
-    }
-
-    public function matches()
-    {
-        return $this->belongsToMany('App\Match');
     }
 }
