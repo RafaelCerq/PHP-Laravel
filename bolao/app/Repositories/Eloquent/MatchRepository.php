@@ -169,7 +169,7 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
         $betting = $user->myBetting()->find($betting_id);
         if($betting){
             $result = $register['scoreboard_a']> $register['scoreboard_b'] ? 'A' :
-                ($register['scoreboard_a'] === ($register['scoreboard_b'] ? 'E' : 'B'));
+                ($register['scoreboard_a'] === $register['scoreboard_b'] ? 'E' : 'B');
 
             $ret = $match->users()->updateExistingPivot(
                 $user,
