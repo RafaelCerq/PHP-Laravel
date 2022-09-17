@@ -160,6 +160,7 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
 
     public function MatchUserSave($match_id, $register)
     {
+        
         $user = auth()->user();
         $match = $user->matches()->find($match_id);
         if (!$match) {
@@ -182,12 +183,12 @@ class MatchRepository extends AbstractRepository implements MatchRepositoryInter
                     ['user_id' => $user->id, 'match_id' => $match->id],
                     ['result' => $result, 'scoreboard_a' => $register['scoreboard_a'], 'scoreboard_b' => $register['scoreboard_b']]
                 );
-
                 if ($ret) {
                     return $match;
                 }
             }
         }
+        
 
         return false;
     }
