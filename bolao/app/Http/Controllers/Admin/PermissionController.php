@@ -88,7 +88,7 @@ class PermissionController extends Controller
         ])->validate();
 
         if ($this->model->create($data)) {
-            session()->flash('msg', trans('bolao.record_added_successusfully'));
+            session()->flash('msg', trans('bolao.record_added_successfully'));
             session()->flash('status', 'success'); // success error notification
             return redirect()->back();
         } else {
