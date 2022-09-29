@@ -45,7 +45,7 @@ class Match extends Model
         $user = auth()->user();
         $teamA = $this->users()->find($user->id)->pivot->scoreboard_a ?? null;
         $teamB = $this->users()->find($user->id)->pivot->scoreboard_b ?? null;
-        if ($teamA && $teamB) {
+        if ($teamA != null && $teamB != null) {
             return "$teamA x $teamB";
         }
 
