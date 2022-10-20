@@ -1,5 +1,4 @@
-# PHP: 7.4
-# Lavavel: 5.6
+## PHP: 7.4 - Lavavel: 5.6
 
 
 - Criar Seed:
@@ -8,12 +7,12 @@
 - Rodar seed:
 - php artisan db:seed
 
-# Migrate
+### Migrate
 - php artisan migrate
 - php artisan migrate:reset
 - php artisan migrate --seed
 - php artisan migrate:rollback
 
-# Caso tenha problemas de classes não encontradas ao executar comandos (exemplo: db:seed), execute os comando abaixo para ajustar o caminho relativo ao projeto para seus arquivos php.
+### Caso tenha problemas de classes não encontradas ao executar comandos (exemplo: db:seed), execute os comando abaixo para ajustar o caminho relativo ao projeto para seus arquivos php.
 - composer update 
 - composer dump-autoload
